@@ -17,8 +17,8 @@ pipeline {
         }
 
         stage('Test Log') {
-          environment{
-            LocalVariable ="HelloLocal"
+          environment {
+            LocalVariable = 'HelloLocal'
           }
           steps {
             writeFile(file: 'LogTestFile.txt', text: "This is an automation file. Env var is ${testParam} local variable is ${LocalVariable}")
@@ -32,7 +32,7 @@ pipeline {
       parallel {
         stage('Deploy') {
           steps {
-            input(message: 'do you want to continue the deployment', id: 'y')
+            input(message: 'do you agree for deployment?', id: 'y')
             echo 'Deploy the application'
           }
         }
