@@ -17,8 +17,11 @@ pipeline {
         }
 
         stage('Test Log') {
+          environment{
+            LocalVariable ="HelloLocal"
+          }
           steps {
-            writeFile(file: 'LogTestFile.txt', text: 'This is an automation file')
+            writeFile(file: 'LogTestFile.txt', text: "This is an automation file. Env var is ${testParam} local variable is ${LocalVariable}")
           }
         }
 
